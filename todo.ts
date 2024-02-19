@@ -6,7 +6,7 @@ function makeUL(array: string[]) {
     list.setAttribute("id", "ulist");
     list.addEventListener("click", toggleClass);
 
-    for (var i = 0; i < userInput.length; i++) {
+    for (let i = 0; i < userInput.length; i++) {
         //create li item on document
         const item = document.createElement("li");
         console.log("item created")
