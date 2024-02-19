@@ -1,18 +1,16 @@
 1 create Frontend with Html  ✔
 
 2 add css
-    - add background for generated <li> itemes. ✔ 
-     - add on hover effect ✔ 
-        -> dont know if this is made with css, basically I want the
-           background of the hoverd <li> item to get highlighted in a
-           diffrent way then the rest of the <li> items. ✔ 
-    - add striketrough, when hovered <li> item is clicked.
-        -> doesnt need to be delted, the delte button handles that, 
-           I do want visual representation of tasks that are done. ✔ 
+    
+     add background for generated <li> itemes. ✔ 
+     add on hover effect ✔
+     add striketrough, when hovered <li> item is clicked. ✔
+        -> doesnt need to be delted, the delte button handles that.   
 
 3 add functionality with typescript
-    - push new textbox string into array ✔ 
-    - add eventlistner for button to push new li item in array ✔    
-    - array needs to be emptied, when the delete button is clicked  ✔
-    - logic error, right now everytime the add or enter event are triggered a new ul is created
-      this meann , if an item is checked it loses its class, needs rewrite of code. 
+     
+     push new textbox string into array ✔ 
+     add eventlistner for button to push new li item in array ✔    
+     array needs to be emptied, when the delete button is clicked  ✔
+     logic error, right now everytime the add or enter event are triggered a new ul is created
+     this means , if an item is checked it loses its class, needs rewrite of code. 
