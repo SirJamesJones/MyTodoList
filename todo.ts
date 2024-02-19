@@ -1,9 +1,9 @@
 let userInput: string[] = [];
-let list = document.createElement("ul");
 let inputElement = document.getElementById("input") as HTMLInputElement;
+let list = document.createElement("ul") as HTMLUListElement;
 
 function makeUL(array: string[]) {
-    list = document.createElement("ul");
+    list.setAttribute("id", "ulist");
     list.addEventListener("click", toggleClass);
 
     for (var i = 0; i < userInput.length; i++) {
@@ -18,38 +18,43 @@ function makeUL(array: string[]) {
     return list;
 }
 
-function clearDiv() {
-    var div = document.getElementById("listdiv");
-    console.log(div?.firstChild);
+function deleteList() {
+    var ulist = document.getElementById("ulist");
+    console.log(ulist?.firstChild);
+    userInput = [];
     //while listdiv has a child node (ul) inside remove them
-    while(div?.firstChild) {
-        div.removeChild(div.firstChild)
+    while(ulist?.firstChild) {
+        ulist.removeChild(ulist.firstChild)
     }
 }
 
-function toggleClass(event: Event) {
-    const clickedItem = event.target as HTMLElement;
+function toggleClass(ev: Event) {
+    const clickedItem = ev.target as HTMLElement;
     if (clickedItem.tagName === "LI"){
         clickedItem.classList.toggle("checked");
         console.log("clicked item:", clickedItem.textContent)
     } 
 }
 
-function addButtonHandler(){
-    const userInputValue = inputElement.value;
-    //trim whitspaces and check if empty, then push into array
-    if (userInputValue.trim() !== "") {
-        userInput.push(userInputValue);
-    }
-    clearDiv();
-    var listdiv = document.getElementById("listdiv");
-    listdiv?.appendChild(makeUL(userInput));
-    inputElement.value="";
-}
-
 let addButton = document.getElementById("add");
 addButton?.addEventListener("click", () => {
-    addButtonHandler();
+    const userInputValue = inputElement.value;
+    if (userInputValue.trim() !== "") {
+        userInput.push(userInputValue);
+        var listdiv = document.getElementById("listdiv");
+        var ulist = document.getElementById("ulist");
+        if (listdiv?.contains(ulist) ){
+            var liElement = document.createElement("li");
+            //convert string to node element, so its assignable
+            liElement.textContent = inputElement.value;
+            list.appendChild(liElement);
+            inputElement.value="";
+        }
+        else {
+        listdiv?.appendChild(makeUL(userInput));
+        inputElement.value="";
+        }
+    }
 })
 
 inputElement?.addEventListener("keydown", (ev) => {
@@ -61,6 +66,11 @@ inputElement?.addEventListener("keydown", (ev) => {
 
 const clearbutton = document.getElementById("clear");
 clearbutton?.addEventListener("click", ()=> {
-    clearDiv();
-    userInput = [];
+    deleteList();
+})
+
+addEventListener("keydown", (ev: KeyboardEvent) => {
+    if (ev.key === "Delete"){
+        deleteList();
+    }
 })
