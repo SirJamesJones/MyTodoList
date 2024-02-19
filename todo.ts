@@ -56,16 +56,16 @@ addButton?.addEventListener("click", () => {
     }
 })
 
+const delButton = document.getElementById("clear");
+delButton?.addEventListener("click", ()=> {
+    deleteList();
+})
+
 inputElement?.addEventListener("keydown", (ev) => {
     if (ev.key === 'Enter'){
         ev.preventDefault();
         addButton?.click();
     }
-})
-
-const clearbutton = document.getElementById("clear");
-clearbutton?.addEventListener("click", ()=> {
-    deleteList();
 })
 
 addEventListener("keydown", (ev: KeyboardEvent) => {
