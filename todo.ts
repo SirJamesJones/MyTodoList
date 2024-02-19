@@ -1,6 +1,6 @@
 let userInput: string[] = [];
-let inputElement = document.getElementById("input") as HTMLInputElement;
-let list = document.createElement("ul") as HTMLUListElement;
+const inputElement = document.getElementById("input") as HTMLInputElement;
+const list = document.createElement("ul") as HTMLUListElement;
 
 function makeUL(array: string[]) {
     list.setAttribute("id", "ulist");
@@ -8,9 +8,9 @@ function makeUL(array: string[]) {
 
     for (var i = 0; i < userInput.length; i++) {
         //create li item on document
-        var item = document.createElement("li");
+        const item = document.createElement("li");
         console.log("item created")
-        // for each iteration of listitems append the corrosponding value in the crated li element
+        //for each iteration of listitems append the corrosponding value in the crated li element
         item.appendChild(document.createTextNode(userInput[i]));
         //add the li elements to ul element
         list.appendChild(item);
@@ -19,10 +19,9 @@ function makeUL(array: string[]) {
 }
 
 function deleteList() {
-    var ulist = document.getElementById("ulist");
-    console.log(ulist?.firstChild);
+    const ulist = document.getElementById("ulist");
     userInput = [];
-    //while listdiv has a child node (ul) inside remove them
+    //while ul contains li elements, delete li element
     while(ulist?.firstChild) {
         ulist.removeChild(ulist.firstChild)
     }
@@ -36,18 +35,18 @@ function toggleClass(ev: Event) {
     } 
 }
 
-let addButton = document.getElementById("add");
+const addButton = document.getElementById("add");
 addButton?.addEventListener("click", () => {
     const userInputValue = inputElement.value;
     if (userInputValue.trim() !== "") {
         userInput.push(userInputValue);
-        var listdiv = document.getElementById("listdiv");
-        var ulist = document.getElementById("ulist");
+        const listdiv = document.getElementById("listdiv");
+        const ulist = document.getElementById("ulist");
         if (listdiv?.contains(ulist) ){
-            var liElement = document.createElement("li");
+            const listElement = document.createElement("li");
             //convert string to node element, so its assignable
-            liElement.textContent = inputElement.value;
-            list.appendChild(liElement);
+            listElement.textContent = inputElement.value;
+            list.appendChild(listElement);
             inputElement.value="";
         }
         else {

@@ -8,18 +8,17 @@ function makeUL(array) {
         //create li item on document
         var item = document.createElement("li");
         console.log("item created");
-        // for each iteration of listitems append the corrosponding value in the crated li element
+        //for each iteration of listitems append the corrosponding value in the crated li element
         item.appendChild(document.createTextNode(userInput[i]));
         //add the li elements to ul element
         list.appendChild(item);
     }
     return list;
 }
-function clearDiv() {
+function deleteList() {
     var ulist = document.getElementById("ulist");
-    console.log(ulist === null || ulist === void 0 ? void 0 : ulist.firstChild);
     userInput = [];
-    //while listdiv has a child node (ul) inside remove them
+    //while ul contains li elements, delete li element
     while (ulist === null || ulist === void 0 ? void 0 : ulist.firstChild) {
         ulist.removeChild(ulist.firstChild);
     }
@@ -39,10 +38,10 @@ addButton === null || addButton === void 0 ? void 0 : addButton.addEventListener
         var listdiv = document.getElementById("listdiv");
         var ulist = document.getElementById("ulist");
         if (listdiv === null || listdiv === void 0 ? void 0 : listdiv.contains(ulist)) {
-            var liElement = document.createElement("li");
+            var listElement = document.createElement("li");
             //convert string to node element, so its assignable
-            liElement.textContent = inputElement.value;
-            list.appendChild(liElement);
+            listElement.textContent = inputElement.value;
+            list.appendChild(listElement);
             inputElement.value = "";
         }
         else {
@@ -59,10 +58,10 @@ inputElement === null || inputElement === void 0 ? void 0 : inputElement.addEven
 });
 var clearbutton = document.getElementById("clear");
 clearbutton === null || clearbutton === void 0 ? void 0 : clearbutton.addEventListener("click", function () {
-    clearDiv();
+    deleteList();
 });
 addEventListener("keydown", function (ev) {
     if (ev.key === "Delete") {
-        clearDiv();
+        deleteList();
     }
 });
