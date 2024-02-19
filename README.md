@@ -15,3 +15,4 @@
      logic error, right now everytime the add or enter event are triggered a new ul is created
      this means, if an item is checked it loses its class, needs rewrite of code. ✔
      add function to delete list by pressing the del button. ✔
+     
