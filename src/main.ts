@@ -1,6 +1,9 @@
+import './stylesheet.css'
+
 let userInput: string[] = [];
 const inputElement = document.getElementById("input") as HTMLInputElement;
 const list = document.createElement("ul") as HTMLUListElement;
+const delButton = document.getElementById("clear") as HTMLButtonElement;
 
 function makeUL(array: string[]) {
     list.setAttribute("id", "ulist");
@@ -31,7 +34,6 @@ function toggleClass(ev: Event) {
     const clickedItem = ev.target as HTMLElement;
     if (clickedItem.tagName === "LI"){
         clickedItem.classList.toggle("checked");
-        console.log("clicked item:", clickedItem.textContent)
     } 
 }
 
@@ -56,7 +58,6 @@ addButton?.addEventListener("click", () => {
     }
 })
 
-const delButton = document.getElementById("clear");
 delButton?.addEventListener("click", ()=> {
     deleteList();
 })
