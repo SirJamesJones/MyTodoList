@@ -6,6 +6,7 @@ const list = document.createElement("ul") as HTMLUListElement;
 const delButton = document.getElementById("clear") as HTMLButtonElement;
 const addButton = document.getElementById("add");
 
+//take user input, put in array, create a ul, create li for all elements in array
 addButton?.addEventListener("click", () => {
     const userInputValue = inputElement.value;
     if (userInputValue.trim() !== "") {
@@ -26,6 +27,7 @@ addButton?.addEventListener("click", () => {
     }
 })
 
+//bunch of EventListner for interactiv frontend
 inputElement?.addEventListener("keydown", (ev) => {
     if (ev.key === 'Enter'){
         ev.preventDefault();
@@ -58,7 +60,6 @@ function makeUL(array: string[]) {
     }
     return list;
 }
-
 
 function deleteList() {
     const ulist = document.getElementById("ulist");
